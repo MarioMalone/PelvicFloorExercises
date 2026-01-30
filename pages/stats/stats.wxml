@@ -23,6 +23,20 @@
     </view>
   </view>
 
+  <view class="section-title">本月打卡</view>
+  <view class="card calendar-card">
+    <view class="calendar-header">{{currentMonthName}}</view>
+    <view class="calendar-weekdays">
+      <view>日</view><view>一</view><view>二</view><view>三</view><view>四</view><view>五</view><view>六</view>
+    </view>
+    <view class="calendar-grid">
+      <view wx:for="{{calendarDays}}" wx:key="index" class="calendar-day">
+        <view class="day-number {{item.isCurrentDay ? 'today' : ''}}">{{item.day}}</view>
+        <view class="training-dot {{item.hasTrained ? 'active' : ''}}" wx:if="{{item.day}}"></view>
+      </view>
+    </view>
+  </view>
+
   <view class="section-title">近7日趋势 (分钟)</view>
   <view class="card chart-container">
     <view class="chart-main">

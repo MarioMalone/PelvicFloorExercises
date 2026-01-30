@@ -7,7 +7,9 @@ Page({
       totalTime: 0,
       totalRounds: 0
     },
-    chartData: []
+    chartData: [],
+    calendarDays: [],
+    currentMonthName: ''
   },
 
   onShow: function () {
@@ -20,12 +22,49 @@ Page({
     // 计算统计数据
     const summary = this.calculateSummary(history)
     const chartData = this.calculateChartData(history)
+    const calendar = this.calculateCalendar(history)
 
     this.setData({
-      history: history.slice(0, 50), // 仅显示最近50条
+      history: history.slice(0, 50),
       summary: summary,
-      chartData: chartData
+      chartData: chartData,
+      calendarDays: calendar.days,
+      currentMonthName: calendar.monthName
     })
+  },
+
+  calculateCalendar: function (history) {
+    const now = new Date()
+    const year = now.getFullYear()
+    const month = now.getMonth() // 0-11
+    const monthName = `${year}年${month + 1}月`
+
+    // 获取本月第一天是周几
+    const firstDay = new Date(year, month, 1).getDay()
+    // 获取本月共有多少天
+    const totalDays = new Date(year, month + 1, 0).getDate()
+
+    const days = []
+    // 填充空白日期
+    for (let i = 0; i < firstDay; i++) {
+      days.push({ day: '', training: false })
+    }
+
+    // 填充实际日期
+    const trainedDates = new Set(history.map(item => item.date))
+    for (let i = 1; i <= totalDays; i++) {
+      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`
+      days.push({
+        day: i,
+        isCurrentDay: i === now.getDate(),
+        hasTrained: trainedDates.has(dateStr)
+      })
+    }
+
+    return {
+      days: days,
+      monthName: monthName
+    }
   },
 
   calculateChartData: function (history) {
