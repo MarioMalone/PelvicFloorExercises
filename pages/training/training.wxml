@@ -5,16 +5,21 @@
   
   <!-- 核心雷达扫描系统 -->
   <view class="radar-system {{isHolding ? 'scanning' : 'focusing'}}">
-    <!-- 基础圆环 -->
+    <!-- 基础圆环 (保持静止) -->
     <view class="radar-ring base-ring"></view>
-    <!-- 脉冲圆环 -->
-    <view class="radar-ring pulse-ring"></view>
+    
+    <!-- 红色分段内圆环 (根据收缩时间分段) -->
+    <view class="segmented-inner-ring" wx:if="{{isHolding}}">
+      <view wx:for="{{segments}}" wx:key="item" 
+            class="segment {{item < (holdTime - currentTime) ? 'active' : ''}}"
+            style="transform: rotate({{item * (360 / holdTime)}}deg) translateY(-85px)">
+      </view>
+    </view>
+
     <!-- 扫描光线/高光 -->
     <view class="scan-beam"></view>
     <!-- 放射线雷达感觉 -->
     <view class="radial-lines"></view>
-    <!-- 中心锁定红点 -->
-    <view class="focus-dot"></view>
   </view>
 
   <!-- 实时数据覆盖层 -->

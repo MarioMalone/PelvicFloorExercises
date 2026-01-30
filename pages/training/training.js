@@ -7,16 +7,19 @@ Page({
         isHolding: true,
         currentRound: 1,
         totalRounds: 10,
-        timer: null
+        timer: null,
+        segments: []
     },
 
     onLoad: function () {
         const plan = app.globalData.currentPlan
+        const segments = Array.from({ length: plan.holdTime }, (_, i) => i)
         this.setData({
             currentTime: plan.holdTime,
             holdTime: plan.holdTime,
             relaxTime: plan.relaxTime,
-            totalRounds: plan.repeats
+            totalRounds: plan.repeats,
+            segments: segments
         })
         this.startTimer()
     },
@@ -39,7 +42,8 @@ Page({
             // 切换到放松
             this.setData({
                 isHolding: false,
-                currentTime: plan.relaxTime
+                currentTime: plan.relaxTime,
+                segments: [] // 放松时清空红色分段圆环
             })
             wx.vibrateShort()
         } else {
@@ -48,10 +52,12 @@ Page({
             if (nextRound > this.data.totalRounds) {
                 this.finishTraining()
             } else {
+                const segments = Array.from({ length: plan.holdTime }, (_, i) => i)
                 this.setData({
                     isHolding: true,
                     currentTime: plan.holdTime,
-                    currentRound: nextRound
+                    currentRound: nextRound,
+                    segments: segments
                 })
                 wx.vibrateShort()
             }
