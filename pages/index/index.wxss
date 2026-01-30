@@ -1,0 +1,58 @@
+/* pages/index/index.wxss */
+.header {
+  margin-top: 20rpx;
+}
+
+.greeting {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+.daily-status {
+  display: flex;
+  justify-content: space-around;
+  padding: 40rpx 0;
+}
+
+.status-item {
+  text-align: center;
+}
+
+.status-item .value {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #4A90E2;
+}
+
+.status-item .label {
+  font-size: 22rpx;
+  color: #666;
+  margin-top: 8rpx;
+}
+
+.start-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100rpx;
+}
+
+.start-btn {
+  width: 400rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 36rpx;
+}
+
+.plan-info {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 30rpx;
+}

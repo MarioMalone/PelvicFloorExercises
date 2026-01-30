@@ -1,0 +1,59 @@
+<!-- pages/stats/stats.wxml -->
+<view class="container">
+  <view class="header-banner">
+    <view class="banner-title">历史统计</view>
+    <view class="banner-desc">每一步坚持都在汇聚成健康的你</view>
+  </view>
+
+  <view class="summary-grid">
+    <view class="grid-item card">
+      <view class="label">坚持天数</view>
+      <view class="value">{{summary.totalDays}}</view>
+      <view class="unit">天</view>
+    </view>
+    <view class="grid-item card">
+      <view class="label">累计时长</view>
+      <view class="value">{{summary.totalTime}}</view>
+      <view class="unit">分钟</view>
+    </view>
+    <view class="grid-item card">
+      <view class="label">累计完成</view>
+      <view class="value">{{summary.totalRounds}}</view>
+      <view class="unit">组</view>
+    </view>
+  </view>
+
+  <view class="section-title">近7日趋势 (分钟)</view>
+  <view class="card chart-container">
+    <view class="chart-main">
+      <view wx:for="{{chartData}}" wx:key="date" class="chart-column">
+        <view class="bar-wrapper">
+          <view class="bar" style="height: {{item.height}}%">
+            <view class="bar-value" wx:if="{{item.value > 0}}">{{item.value}}</view>
+          </view>
+        </view>
+        <view class="bar-label">{{item.label}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section-title">最近记录</view>
+  
+  <view class="history-list">
+    <block wx:if="{{history.length > 0}}">
+      <view wx:for="{{history}}" wx:key="timestamp" class="history-item card">
+        <view class="item-left">
+          <view class="item-date">{{item.date}}</view>
+          <view class="item-info">{{item.rounds}}组 · {{item.duration}}秒</view>
+        </view>
+        <view class="item-right">
+          <view class="status-tag">已完成</view>
+        </view>
+      </view>
+    </block>
+    <view wx:else class="empty-state">
+      <view class="empty-icon">📊</view>
+      <view class="empty-text">暂无数据，开始第一场训练吧</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,31 @@
+<!-- index.wxml -->
+<view class="container">
+  <view class="header card">
+    <view class="greeting">你好，健康的一天</view>
+    <view class="subtitle">今日尚未训练，快来开启训练吧</view>
+  </view>
+
+  <view class="daily-status card">
+    <view class="status-item">
+      <view class="value">{{todayCount}}</view>
+      <view class="label">今日次数</view>
+    </view>
+    <view class="status-item">
+      <view class="value">{{streak}}</view>
+      <view class="label">连胜天数</view>
+    </view>
+    <view class="status-item">
+      <view class="value">{{totalTime}}</view>
+      <view class="label">累计分钟</view>
+    </view>
+  </view>
+
+  <view class="start-section">
+    <view class="btn-primary start-btn" bindtap="startTraining">
+      开始训练
+    </view>
+    <view class="plan-info">
+      当前模式：{{currentPlan.holdTime}}s收缩 / {{currentPlan.relaxTime}}s放松 / {{currentPlan.repeats}}次
+    </view>
+  </view>
+</view>

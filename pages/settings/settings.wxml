@@ -1,0 +1,78 @@
+<!-- pages/settings/settings.wxml -->
+<view class="container">
+  <view class="section-title">训练参数设置</view>
+  
+  <view class="card settings-group">
+    <view class="setting-item">
+      <view class="item-label">
+        <text class="title">收缩时长</text>
+        <text class="desc">每次肌肉收缩持续的时间</text>
+      </view>
+      <view class="item-control">
+        <slider bindchange="onHoldTimeChange" value="{{holdTime}}" min="1" max="10" show-value activeColor="#4A90E2" />
+        <text class="unit">秒</text>
+      </view>
+    </view>
+
+    <view class="setting-item">
+      <view class="item-label">
+        <text class="title">放松时长</text>
+        <text class="desc">每次肌肉放松持续的时间</text>
+      </view>
+      <view class="item-control">
+        <slider bindchange="onRelaxTimeChange" value="{{relaxTime}}" min="1" max="10" show-value activeColor="#4A90E2" />
+        <text class="unit">秒</text>
+      </view>
+    </view>
+
+    <view class="setting-item border-none">
+      <view class="item-label">
+        <text class="title">循环次数</text>
+        <text class="desc">每组训练包含的循环数</text>
+      </view>
+      <view class="item-control">
+        <slider bindchange="onRepeatsChange" value="{{repeats}}" min="1" max="30" show-value activeColor="#4A90E2" />
+        <text class="unit">次</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="btn-primary" bindtap="saveSettings">保存设置</view>
+
+  <view class="section-title margin-top">每日提醒</view>
+  <view class="card settings-group">
+    <view class="setting-item">
+      <view class="item-label">
+        <text class="title">开启训练提醒</text>
+        <text class="desc">每天定时提醒您进行盆底肌训练</text>
+      </view>
+      <view class="item-control">
+        <switch checked="{{reminderEnabled}}" bindchange="onReminderToggle" color="#4A90E2" />
+      </view>
+    </view>
+    
+    <view class="setting-item border-none" wx:if="{{reminderEnabled}}">
+      <view class="item-label">
+        <text class="title">提醒时间</text>
+      </view>
+      <view class="item-control">
+        <picker mode="time" value="{{reminderTime}}" bindchange="onReminderTimeChange">
+          <view class="picker-value">{{reminderTime}}</view>
+        </picker>
+        <text class="unit">></text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section-title margin-top">数据管理</view>
+  <view class="card">
+    <view class="danger-zone" bindtap="clearHistory">
+      <text class="danger-text">清除所有训练历史</text>
+      <text class="danger-arrow">></text>
+    </view>
+  </view>
+
+  <view class="footer">
+    <text>版本 1.0.0</text>
+  </view>
+</view>

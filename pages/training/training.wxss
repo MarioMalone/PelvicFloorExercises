@@ -1,0 +1,59 @@
+/* pages/training/training.wxss */
+.training-container {
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+}
+
+.stage-text {
+  font-size: 60rpx;
+  font-weight: bold;
+  color: #4A90E2;
+  margin-bottom: 40rpx;
+  text-align: center;
+}
+
+.animation-circle {
+  width: 400rpx;
+  height: 400rpx;
+  border-radius: 50%;
+  background: rgba(74, 144, 226, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 10rpx solid #4A90E2;
+  transition: all 1s linear;
+}
+
+.timer-value {
+  font-size: 80rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 简单的呼吸动画效果 */
+.shrink {
+  transform: scale(0.8);
+  background: rgba(74, 144, 226, 0.3);
+}
+
+.expand {
+  transform: scale(1.1);
+}
+
+.round-count {
+  font-size: 32rpx;
+  color: #666;
+  text-align: center;
+}
+
+.mode-detail {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+  text-align: center;
+}
+
+.action-section {
+  margin-bottom: 60rpx;
+}

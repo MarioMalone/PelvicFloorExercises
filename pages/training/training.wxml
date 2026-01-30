@@ -1,0 +1,18 @@
+<!-- pages/training/training.wxml -->
+<view class="container training-container">
+  <view class="timer-section">
+    <view class="stage-text">{{isHolding ? '收缩' : '放松'}}</view>
+    <view class="animation-circle {{isHolding ? 'shrink' : 'expand'}}">
+      <view class="timer-value">{{currentTime}}s</view>
+    </view>
+  </view>
+
+  <view class="progress-section">
+    <view class="round-count">组数：{{currentRound}} / {{totalRounds}}</view>
+    <view class="mode-detail">当前：{{holdTime}}s收缩 / {{relaxTime}}s放松</view>
+  </view>
+
+  <view class="action-section">
+    <view class="btn-secondary" bindtap="cancelTraining">停止</view>
+  </view>
+</view>

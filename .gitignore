@@ -1,0 +1,14 @@
+# WeChat Mini Program Specific
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Developer Tools
+project.private.config.json
+.vscode/
+
+# Project Specific
+.gemini/
+brain/
+PRD.md
+Implementation_Plan.md

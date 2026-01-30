@@ -1,0 +1,85 @@
+/* pages/settings/settings.wxss */
+.settings-group {
+  padding: 0 30rpx !important;
+}
+
+.setting-item {
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.border-none {
+  border-bottom: none;
+}
+
+.item-label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20rpx;
+}
+
+.item-label .title {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.item-label .desc {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 6rpx;
+}
+
+.item-control {
+  display: flex;
+  align-items: center;
+}
+
+slider {
+  flex: 1;
+  margin: 0 20rpx 0 0;
+}
+
+.unit {
+  font-size: 26rpx;
+  color: #666;
+  min-width: 40rpx;
+}
+
+.picker-value {
+  font-size: 32rpx;
+  color: #4A90E2;
+  font-weight: 500;
+  margin-right: 10rpx;
+}
+
+.margin-top {
+  margin-top: 60rpx;
+}
+
+.danger-zone {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 0;
+}
+
+.danger-text {
+  color: #E02020;
+  font-size: 28rpx;
+}
+
+.danger-arrow {
+  color: #CCC;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 100rpx;
+  padding-bottom: 40rpx;
+}
+
+.footer text {
+  font-size: 24rpx;
+  color: #CCC;
+}
