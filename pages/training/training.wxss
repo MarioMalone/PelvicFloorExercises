@@ -1,59 +1,209 @@
 /* pages/training/training.wxss */
-.training-container {
-  align-items: center;
-  justify-content: space-around;
+
+/* 1. 背景层：纯浅灰 (#BDBDBD) */
+.scifi-bg {
+  width: 100vw;
   height: 100vh;
-}
-
-.stage-text {
-  font-size: 60rpx;
-  font-weight: bold;
-  color: #4A90E2;
-  margin-bottom: 40rpx;
-  text-align: center;
-}
-
-.animation-circle {
-  width: 400rpx;
-  height: 400rpx;
-  border-radius: 50%;
-  background: rgba(74, 144, 226, 0.1);
+  background-color: #BDBDBD;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 10rpx solid #4A90E2;
-  transition: all 1s linear;
+  overflow: hidden;
 }
 
-.timer-value {
-  font-size: 80rpx;
-  font-weight: bold;
-  color: #333;
+/* 2. 主体层：黑色手机模型 */
+.phone-frame {
+  width: 300px;
+  height: 600px;
+  background-color: #000;
+  border-radius: 40px;
+  padding: 12px;
+  box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-/* 简单的呼吸动画效果 */
-.shrink {
-  transform: scale(0.8);
-  background: rgba(74, 144, 226, 0.3);
+/* 3. 屏幕为纯黑 */
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  background-color: #0a0a0a;
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
 }
 
-.expand {
+/* 3.1 屏幕底层纹理：放射状线条 */
+.bg-texture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* 4. 核心雷达扫描系统 */
+.radar-system {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 基础圆环 */
+.base-ring {
+  width: 140px;
+  height: 140px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  position: absolute;
+  transition: all 1s ease-out;
+}
+
+/* 扫描进行中的状态：Scanning */
+.scanning .base-ring {
+  animation: rotateRing 8s linear infinite;
+  border-top-color: rgba(255, 255, 255, 0.8);
   transform: scale(1.1);
 }
 
-.round-count {
-  font-size: 32rpx;
-  color: #666;
-  text-align: center;
+/* 脉冲呼吸动画 */
+.pulse-ring {
+  width: 140px;
+  height: 140px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  position: absolute;
+  display: none;
 }
 
-.mode-detail {
-  font-size: 24rpx;
-  color: #999;
-  margin-top: 10rpx;
-  text-align: center;
+.scanning .pulse-ring {
+  display: block;
+  animation: pulseBreath 3s ease-in-out infinite;
 }
 
-.action-section {
-  margin-bottom: 60rpx;
+/* 扫描高光束 */
+.scan-beam {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: conic-gradient(from 0deg, rgba(255, 255, 255, 0.1) 0deg, transparent 60deg);
+  border-radius: 50%;
+  display: none;
+}
+
+.scanning .scan-beam {
+  display: block;
+  animation: rotateBeam 4s linear infinite;
+}
+
+/* 放射线 */
+.radial-lines {
+  width: 180px;
+  height: 180px;
+  position: absolute;
+  background: repeating-conic-gradient(from 0deg, rgba(255, 255, 255, 0.05) 0deg 10deg, transparent 10deg 20deg);
+  border-radius: 50%;
+  display: none;
+}
+
+.scanning .radial-lines {
+  display: block;
+}
+
+/* 聚焦状态：Focusing (Relax) */
+.focusing .base-ring {
+  transform: scale(0.8);
+  opacity: 0.3;
+}
+
+.focus-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #FF3B30;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #FF3B30, 0 0 20px rgba(255, 59, 48, 0.5);
+  opacity: 0;
+  transition: all 0.5s ease-in;
+}
+
+.focusing .focus-dot {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* UI Overlay 文字层 */
+.ui-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 60px;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.close-btn {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 20px;
+  pointer-events: auto;
+}
+
+.stage-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 5px;
+}
+
+.timer-display {
+  font-size: 32px;
+  font-weight: 200;
+  color: #fff;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.round-indicator {
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.3);
+  margin-top: 15px;
+  letter-spacing: 1px;
+}
+
+/* Keyframes */
+
+@keyframes rotateRing {
+  from { transform: rotate(0deg) scale(1.1); }
+  to { transform: rotate(360deg) scale(1.1); }
+}
+
+@keyframes rotateBeam {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseBreath {
+  0% { transform: scale(1); opacity: 0.1; }
+  50% { transform: scale(1.1); opacity: 0.3; }
+  100% { transform: scale(1); opacity: 0.1; }
 }

@@ -1,4 +1,7 @@
 {
     "navigationBarTitleText": "正在训练",
-    "disableScroll": true
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#BDBDBD",
+    "disableScroll": true,
+    "navigationStyle": "custom"
 }
