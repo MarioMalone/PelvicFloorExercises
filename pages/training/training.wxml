@@ -1,32 +1,27 @@
 <!-- pages/training/training.wxml -->
-<view class="scifi-bg">
-  <!-- 手机外框模型 -->
-  <view class="phone-frame">
-    <view class="phone-screen">
-      <!-- 极弱放射纹理底层 -->
-      <view class="bg-texture"></view>
-      
-      <!-- 核心雷达扫描系统 -->
-      <view class="radar-system {{isHolding ? 'scanning' : 'focusing'}}">
-        <!-- 基础圆环 -->
-        <view class="radar-ring base-ring"></view>
-        <!-- 脉冲圆环 -->
-        <view class="radar-ring pulse-ring"></view>
-        <!-- 扫描光线/高光 -->
-        <view class="scan-beam"></view>
-        <!-- 放射线雷达感觉 -->
-        <view class="radial-lines"></view>
-        <!-- 中心锁定红点 -->
-        <view class="focus-dot"></view>
-      </view>
+<view class="scifi-container">
+  <!-- 极弱放射纹理底层 -->
+  <view class="bg-texture"></view>
+  
+  <!-- 核心雷达扫描系统 -->
+  <view class="radar-system {{isHolding ? 'scanning' : 'focusing'}}">
+    <!-- 基础圆环 -->
+    <view class="radar-ring base-ring"></view>
+    <!-- 脉冲圆环 -->
+    <view class="radar-ring pulse-ring"></view>
+    <!-- 扫描光线/高光 -->
+    <view class="scan-beam"></view>
+    <!-- 放射线雷达感觉 -->
+    <view class="radial-lines"></view>
+    <!-- 中心锁定红点 -->
+    <view class="focus-dot"></view>
+  </view>
 
-      <!-- 实时数据覆盖层 -->
-      <view class="ui-overlay">
-        <view class="close-btn" bindtap="cancelTraining">✕</view>
-        <view class="stage-label">{{isHolding ? 'HOLD' : 'RELAX'}}</view>
-        <view class="timer-display">{{currentTime}}s</view>
-        <view class="round-indicator">ROUND {{currentRound}} / {{totalRounds}}</view>
-      </view>
-    </view>
+  <!-- 实时数据覆盖层 -->
+  <view class="ui-overlay">
+    <view class="close-btn" bindtap="cancelTraining">✕</view>
+    <view class="stage-label">{{isHolding ? 'HOLD' : 'RELAX'}}</view>
+    <view class="timer-display">{{currentTime}}s</view>
+    <view class="round-indicator">ROUND {{currentRound}} / {{totalRounds}}</view>
   </view>
 </view>
