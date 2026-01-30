@@ -8,7 +8,8 @@ Page({
         currentRound: 1,
         totalRounds: 10,
         timer: null,
-        segments: []
+        segments: [],
+        progressDeg: 0
     },
 
     onLoad: function () {
@@ -31,7 +32,16 @@ Page({
             if (nextTime < 0) {
                 this.switchStage()
             } else {
-                this.setData({ currentTime: nextTime })
+                // 计算进度百分比
+                const plan = app.globalData.currentPlan
+                const totalTime = this.data.isHolding ? plan.holdTime : plan.relaxTime
+                const elapsed = totalTime - nextTime
+                const progress = (elapsed / totalTime) * 360
+
+                this.setData({
+                    currentTime: nextTime,
+                    progressDeg: progress
+                })
             }
         }, 1000)
     },
