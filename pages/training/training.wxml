@@ -1,29 +1,28 @@
-<!-- pages/training/training.wxml -->
 <view class="scifi-container">
-  <!-- 极弱放射纹理底层 -->
-  <view class="bg-texture"></view>
-  
-  <!-- 核心雷达扫描系统 -->
+  <!-- 核心圆环系统 -->
   <view class="radar-system {{isHolding ? 'scanning' : 'focusing'}}">
     <!-- 基础圆环 (有呼吸缩放动画) -->
     <view class="radar-ring base-ring"></view>
     
-    <!-- 红色进度圆环 -->
-    <view class="progress-ring" 
-          style="background: conic-gradient(#FF3B30 {{progressDeg}}deg, transparent {{progressDeg}}deg)">
+    <!-- 红色进度圆环 (仅收紧时显示) -->
+    <view class="progress-ring" wx:if="{{isHolding}}"
+          style="background: conic-gradient(#D65D56 {{progressDeg}}deg, transparent {{progressDeg}}deg)">
     </view>
-    
-    <!-- 扫描光线/高光 -->
-    <view class="scan-beam"></view>
-    <!-- 放射线雷达感觉 -->
-    <view class="radial-lines"></view>
   </view>
 
   <!-- 实时数据覆盖层 -->
   <view class="ui-overlay">
     <view class="close-btn" bindtap="cancelTraining">✕</view>
-    <view class="stage-label">{{isHolding ? 'HOLD' : 'RELAX'}}</view>
-    <view class="timer-display">{{currentTime}}s</view>
-    <view class="round-indicator">ROUND {{currentRound}} / {{totalRounds}}</view>
+    <block wx:if="{{isPreparing}}">
+      <view class="stage-label">准备</view>
+      <view class="timer-display">{{prepareTime + 1}}</view>
+      <view class="round-indicator">即将开始...</view>
+    </block>
+    <block wx:else>
+      <view class="stage-label">{{isHolding ? '收紧' : '放松'}}</view>
+      <view class="timer-display">{{currentTime}}s</view>
+      <view class="round-indicator">第 {{currentRound}} / {{totalRounds}} 组</view>
+      <view class="end-training-btn" bindtap="cancelTraining">结束训练</view>
+    </block>
   </view>
 </view>

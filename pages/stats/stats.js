@@ -78,15 +78,17 @@ Page({
       const dateStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
       const label = (d.getMonth() + 1) + '/' + d.getDate()
 
-      // 计算该日期的总时长
-      const dayTotal = history
-        .filter(item => item.date === dateStr)
-        .reduce((acc, item) => acc + item.duration, 0)
+      // 计算该日期的训练指数 (分钟 * 组数)
+      const records = history.filter(item => item.date === dateStr)
+      const dayIndex = records.reduce((acc, item) => {
+        const mins = item.duration / 60
+        return acc + (mins * item.rounds)
+      }, 0)
 
       days.push({
         date: dateStr,
         label: label,
-        value: Math.round(dayTotal / 60), // 分钟
+        value: Math.round(dayIndex), // 训练指数
         height: 0 // 初始高度
       })
     }

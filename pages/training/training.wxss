@@ -43,7 +43,28 @@
   border: 2px solid rgba(255, 255, 255, 0.15);
   border-radius: 50%;
   position: absolute;
-  animation: breathe 3s ease-in-out infinite;
+}
+
+/* 收缩阶段：圆环向内收缩律动 */
+.scanning .base-ring {
+  animation: contractRhythm 4s ease-in-out infinite;
+}
+
+/* 放松阶段：圆环向外扩张律动 */
+.focusing .base-ring {
+  animation: expandRhythm 4s ease-in-out infinite;
+}
+
+/* 收缩律动：向内 (调缓幅度) */
+@keyframes contractRhythm {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(0.92); opacity: 1; }
+}
+
+/* 扩张律动：向外 (调缓幅度) */
+@keyframes expandRhythm {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.08); opacity: 1; }
 }
 
 /* 红色进度圆环 */
@@ -54,7 +75,7 @@
   border-radius: 50%;
   mask: radial-gradient(transparent 70px, #fff 71px);
   -webkit-mask: radial-gradient(transparent 70px, #fff 71px);
-  box-shadow: 0 0 20px rgba(255, 59, 48, 0.5);
+  box-shadow: 0 0 20px rgba(214, 93, 86, 0.3);
   transition: background 0.3s ease;
 }
 
@@ -141,6 +162,22 @@
   color: rgba(255, 255, 255, 0.2);
   margin-top: 30rpx;
   letter-spacing: 4rpx;
+}
+
+.end-training-btn {
+  margin-top: 80rpx;
+  padding: 15rpx 40rpx;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 40rpx;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 24rpx;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+}
+
+.end-training-btn:active {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* 动画定义 */

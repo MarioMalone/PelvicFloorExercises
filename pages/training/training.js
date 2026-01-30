@@ -5,6 +5,8 @@ Page({
     data: {
         currentTime: 3,
         isHolding: true,
+        isPreparing: true,
+        prepareTime: 2,
         currentRound: 1,
         totalRounds: 10,
         timer: null,
@@ -20,9 +22,24 @@ Page({
             holdTime: plan.holdTime,
             relaxTime: plan.relaxTime,
             totalRounds: plan.repeats,
-            segments: segments
+            segments: segments,
+            isPreparing: true,
+            prepareTime: 2
         })
-        this.startTimer()
+        this.startPrepare()
+    },
+
+    startPrepare: function () {
+        this.timer = setInterval(() => {
+            let nextTime = this.data.prepareTime - 1
+            if (nextTime < 0) {
+                clearInterval(this.timer)
+                this.setData({ isPreparing: false })
+                this.startTimer()
+            } else {
+                this.setData({ prepareTime: nextTime })
+            }
+        }, 1000)
     },
 
     startTimer: function () {

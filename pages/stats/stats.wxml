@@ -37,7 +37,7 @@
     </view>
   </view>
 
-  <view class="section-title">近7日趋势 (分钟)</view>
+  <view class="section-title">近7日趋势 (训练指数)</view>
   <view class="card chart-container">
     <view class="chart-main">
       <view wx:for="{{chartData}}" wx:key="date" class="chart-column">
