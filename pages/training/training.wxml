@@ -12,7 +12,7 @@
     <view class="segmented-inner-ring" wx:if="{{isHolding}}">
       <view wx:for="{{segments}}" wx:key="item" 
             class="segment {{item < (holdTime - currentTime) ? 'active' : ''}}"
-            style="transform: rotate({{item * (360 / holdTime)}}deg) translateY(-85px)">
+            style="transform: rotate({{item * (360 / holdTime)}}deg)">
       </view>
     </view>
 

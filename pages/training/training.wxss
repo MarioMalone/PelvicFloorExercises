@@ -36,37 +36,39 @@
   justify-content: center;
 }
 
-/* 基础圆环 (保持静止) */
+/* 基础圆环 (保持静止，无缩放) */
 .base-ring {
-  width: 200px;
-  height: 200px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 220px;
+  height: 220px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   position: absolute;
 }
 
-/* 红色分段内圆环 */
+/* 红色分段内圆环容器 */
 .segmented-inner-ring {
   position: absolute;
-  width: 200px;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 180px;
+  height: 180px;
 }
 
+/* 单个分段 */
 .segment {
   position: absolute;
-  width: 2px;
-  height: 12px;
-  background-color: rgba(255, 59, 48, 0.15);
-  border-radius: 2px;
-  transition: background-color 0.3s ease;
+  left: 50%;
+  top: 0;
+  width: 6px;
+  height: 18px;
+  margin-left: -3px;
+  background-color: rgba(255, 59, 48, 0.1);
+  border-radius: 3px;
+  transform-origin: center 90px;
+  transition: all 0.3s ease;
 }
 
 .segment.active {
   background-color: #FF3B30;
-  box-shadow: 0 0 10px rgba(255, 59, 48, 0.8);
+  box-shadow: 0 0 12px rgba(255, 59, 48, 0.9);
 }
 
 /* 扫描光束 (仅在HOLD时旋转) */
