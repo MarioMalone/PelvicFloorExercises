@@ -1,54 +1,80 @@
-# 盆底肌训练助手 (Pelvic Floor Exercise Mini Program)
+# 盆底肌训练助手 | Pelvic Floor Exercise Mini Program
 
-一款专为盆底肌锻炼（凯格尔运动）设计的微信小程序。结合了极简主义美学与高科技健康监测风格的视觉设计，提供沉浸式的训练引导与数据追踪体验。
+> **Minimalism meets Medical Grade Health Tech.** 
+> **极简视觉与专业健康科技的完美融合。**
 
-## ✨ 核心特性
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Platform](https://img.shields.io/badge/platform-WeChat%20Mini%20Program-brightgreen.svg)
 
-- **🚀 科技感训练引擎**
-  - **沉浸式 UI**：全屏深邃黑色背景，配合 60fps 丝滑雷达律动动画。
-  - **动态引导**：收缩时圆环向内律动，放松时向外扩张，通过视觉反馈引导训练节奏。
-  - **进度闭环**：红色进度弧线顺时针实时填充，收缩完成进度一目了然。
-  - **准备环节**：训练前 2 秒缓冲时间，确保用户做好姿势准备。
+---
 
-- **📊 数据统计与追踪**
-  - **训练指数 (Intensity Index)**：独创计算公式 `时间 × 组数`，更科学地评估训练质量而非单一时长。
-  - **7日趋势图**：可视化展示过去一周的训练强度波动。
-  - **月度打卡日历**： bird's-eye 视图，蓝色圆点记录每日坚持成果。
-  - **历史记录**：详细记录每一次训练的日期、时长和完成组数。
+## 🌟 核心理念 | Core Essence
 
-- **🔔 智能提醒**
-  - **每日订阅消息**：可自定义提醒时间，帮助用户养成长期坚持的习惯。
+这不仅仅是一个计数器，它是你的盆底肌健康教练。受 **Apple Health** 与 **Nothing OS** 设计语言启发，我们构建了一个沉浸式、极简且充满未来感的训练环境。
 
-## 🎨 视觉风格 (Visual Aesthetic)
+This isn't just a timer; it's your pelvic floor's personal architect. Inspired by **Apple Health** and **Nothing OS**, we've crafted an immersive, minimalist training sanctuary that feels like the future of health tech.
 
-- **风格定位**：Health Tech / Minimalist / Sci-Fi
-- **配色方案**：
-  - 背景：沉浸黑 (`#050505`) / 极简灰 (`#BDBDBD`)
-  - 强调色：低饱和莫兰迪红 (`#D65D56`)，用于进度条表现。
-- **设计灵感**：参考 Apple Health 与 Nothing OS 的设计语言。
+---
 
-## 🛠 开发者指南
+## ✨ 巅峰特性 | Peak Features
 
-### 环境要求
-- 微信开发者工具 (Stable 1.05+)
-- 微信 App >= 7.0
+### 1. 🚀 沉浸式律动训练引擎 | Immersive Haptic Training Engine
+- **60FPS 丝滑律动 | Fluid 60FPS UI**: 每一帧动画都经过深度优化，雷达圆环如同呼吸般自然，实时映射你的收缩状态。
+- **动态引导 | Dynamic Guidance**: 收缩时引力向内塌缩，放松时能量向外扩张。视觉反馈与生理节律深度同步。
+- **智能预热 | Pre-Heat Sequence**: 2 秒黄金准备期，让你在开始前进入最佳状态。
+- **60FPS Fluid Motion**: Meticulously optimized animations. The radar ring mimics natural breath, mirroring your physical movements in real-time.
+- **Dynamic Guidance**: Gravitational collapse on contraction, energetic expansion on release. Deep synchronization between visuals and biology.
+- **Intelligent Buffer**: A 2-second "golden window" to ensure you're perfectly positioned before the session starts.
 
-### 本地部署
-1. 克隆仓库：`git clone https://github.com/MarioMalone/PelvicFloorExercises.git`
-2. 打开微信开发者工具，点击“导入项目”。
-3. 选择项目根目录。
-4. 在 `settings.js` 中配置你自己的微信模板消息 ID。
+### 2. 📊 科学数据追踪 | Data-Driven Mastery
+- **训练指数 (Intensity Index) | Training Intensity Index**: 摒弃单一时长维度，首创 `时间 (Minutes) × 组数 (Rounds)` 复合算法，精准量化训练负载。
+- **7日趋势矩阵 | 7-Day Trend Matrix**: 直观呈现动力波段，掌握进步轨迹。
+- **月度成就图景 | Monthly Achievement Landscape**: 蓝色星点记录你的每一份坚持。
+- **Precision Metrics**: We moved beyond simple timers. Our proprietary `Minutes × Rounds` formula provides a scientific heatmap of your actual training load.
+- **Trend Visualization**: A high-fidelity matrix showcasing your progress over the past 7 days.
+- **Dot-Grid Calendar**: A visceral "bird's-eye" view of your consistency.
 
-## 📂 项目结构
+---
+
+## 🎨 视觉美学 | Visual Aesthetics
+
+我们将 **Health Tech** 与 **Sci-Fi** 元素拆解重组：
+
+| Element / 元素 | Style / 风格 | Spec / 规格 |
+| :--- | :--- | :--- |
+| **Theme / 主题** | Immersive Black | `#050505` Deep Void |
+| **Accent / 强调色** | Morandi Red | `#D65D56` Sophisticated Power |
+| **Typography / 字体** | Minimalist Sans | Clean, Crisp, Legible |
+
+---
+
+## 📂 架构图谱 | Architecture Atlas
+
 ```text
 ├── pages/
-│   ├── index/       # 首页：仪表盘与入口
-│   ├── training/    # 训练引擎：核心交互动画
-│   ├── stats/       # 统计页：日历、图表与历史
-│   └── settings/    # 设置页：计划配置与提醒
-├── app.js           # 全局逻辑与数据初始化
-└── app.wxss         # 全局视觉设计规范
+│   ├── index/       # Dashboard & Gateway (仪表盘与入口)
+│   ├── training/    # The Engine: Core Interaction (核心律动引擎)
+│   ├── stats/       # Analytics & History (数据洞察与历史)
+│   └── settings/    # Configuration & Plans (计划配置与提醒)
+├── app.js           # Core Logic & Global State (内核逻辑)
+└── app.wxss         # Visual Design Specs (视觉规范)
 ```
 
-## 📝 许可证
-MIT License
+---
+
+## 🛠 部署指南 | Dev & Deployment
+
+1. **Clone & Entry**: `git clone https://github.com/MarioMalone/PelvicFloorExercises.git`
+2. **Import**: 在微信开发者工具中导入项目。
+3. **Template ID**: 在 `settings.js` 中配置您的微信订阅消息 ID (Template ID)。
+
+---
+
+## � 许可证 | License
+
+Project licensed under the **MIT License**. Created by [MarioMalone](https://github.com/MarioMalone).
+
+---
+
+> "Small habits, monumental changes." — **Start your journey today.**
+> “微小的习惯，成就卓越的改变。” —— **今天开始。**
