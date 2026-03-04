@@ -67,7 +67,7 @@
   50% { transform: scale(1.08); opacity: 1; }
 }
 
-/* 红色进度圆环 */
+/* 青蓝色进度圆环 */
 .progress-ring {
   position: absolute;
   width: 180px;
@@ -75,7 +75,7 @@
   border-radius: 50%;
   mask: radial-gradient(transparent 70px, #fff 71px);
   -webkit-mask: radial-gradient(transparent 70px, #fff 71px);
-  box-shadow: 0 0 20px rgba(214, 93, 86, 0.3);
+  box-shadow: 0 0 25rpx rgba(0, 240, 255, 0.5);
   transition: background 0.3s ease;
 }
 
@@ -90,7 +90,7 @@
   width: 240px;
   height: 240px;
   position: absolute;
-  background: conic-gradient(from 0deg, rgba(255, 255, 255, 0.08) 0deg, transparent 90deg);
+  background: conic-gradient(from 0deg, rgba(0, 240, 255, 0.15) 0deg, transparent 90deg);
   border-radius: 50%;
   display: none;
 }
@@ -105,7 +105,7 @@
   width: 260px;
   height: 260px;
   position: absolute;
-  background: repeating-conic-gradient(from 0deg, rgba(255, 255, 255, 0.02) 0deg 5deg, transparent 5deg 15deg);
+  background: repeating-conic-gradient(from 0deg, rgba(0, 240, 255, 0.05) 0deg 5deg, transparent 5deg 15deg);
   border-radius: 50%;
   display: none;
 }

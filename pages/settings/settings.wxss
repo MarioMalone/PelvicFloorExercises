@@ -1,11 +1,23 @@
 /* pages/settings/settings.wxss */
+/* pages/settings/settings.wxss */
+.section-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #E0E0E0;
+  margin-bottom: 20rpx;
+  padding-left: 20rpx;
+  border-left: 6rpx solid #00F0FF;
+  letter-spacing: 2rpx;
+  text-transform: uppercase;
+}
+
 .settings-group {
   padding: 0 30rpx !important;
 }
 
 .setting-item {
   padding: 30rpx 0;
-  border-bottom: 1rpx solid #F0F0F0;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.1);
 }
 
 .border-none {
@@ -21,12 +33,13 @@
 .item-label .title {
   font-size: 30rpx;
   font-weight: 500;
-  color: #333;
+  color: #E0E0E0;
+  letter-spacing: 1rpx;
 }
 
 .item-label .desc {
   font-size: 22rpx;
-  color: #999;
+  color: #808090;
   margin-top: 6rpx;
 }
 
@@ -42,15 +55,16 @@ slider {
 
 .unit {
   font-size: 26rpx;
-  color: #666;
+  color: #A0A0B0;
   min-width: 40rpx;
 }
 
 .picker-value {
   font-size: 32rpx;
-  color: #4A90E2;
+  color: #00F0FF;
   font-weight: 500;
   margin-right: 10rpx;
+  text-shadow: 0 0 10rpx rgba(0, 240, 255, 0.4);
 }
 
 .margin-top {
@@ -65,12 +79,14 @@ slider {
 }
 
 .danger-text {
-  color: #E02020;
+  color: #FF3366;
   font-size: 28rpx;
+  text-shadow: 0 0 8rpx rgba(255, 51, 102, 0.4);
+  letter-spacing: 1rpx;
 }
 
 .danger-arrow {
-  color: #CCC;
+  color: #808090;
 }
 
 .footer {
@@ -81,5 +97,6 @@ slider {
 
 .footer text {
   font-size: 24rpx;
-  color: #CCC;
+  color: #606070;
+  letter-spacing: 2rpx;
 }
