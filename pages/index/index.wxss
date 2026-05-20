@@ -1,58 +1,116 @@
 /* pages/index/index.wxss */
+/* pages/index/index.wxss */
 .header {
   margin-top: 20rpx;
 }
 
 .greeting {
-  font-size: 40rpx;
+  font-size: 44rpx;
   font-weight: bold;
-  color: #333;
+  color: #E0E0E0;
+  text-shadow: 0 0 10rpx rgba(255, 255, 255, 0.3);
+  letter-spacing: 2rpx;
 }
 
 .subtitle {
   font-size: 24rpx;
-  color: #999;
-  margin-top: 10rpx;
+  color: #A0A0B0;
+  margin-top: 12rpx;
+  letter-spacing: 1rpx;
 }
 
 .daily-status {
   display: flex;
   justify-content: space-around;
   padding: 40rpx 0;
+  position: relative;
+}
+
+/* 状态块之间的分割线 */
+.daily-status::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 33.33%;
+  width: 1px;
+  height: 60%;
+  transform: translateY(-50%);
+  background: linear-gradient(to bottom, transparent, rgba(0, 240, 255, 0.3), transparent);
+}
+
+.daily-status::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 66.66%;
+  width: 1px;
+  height: 60%;
+  transform: translateY(-50%);
+  background: linear-gradient(to bottom, transparent, rgba(0, 240, 255, 0.3), transparent);
 }
 
 .status-item {
   text-align: center;
+  flex: 1;
 }
 
 .status-item .value {
-  font-size: 36rpx;
+  font-size: 48rpx;
   font-weight: bold;
-  color: #4A90E2;
+  color: #00F0FF;
+  font-family: 'Helvetica Neue', sans-serif;
+  text-shadow: 0 0 15rpx rgba(0, 240, 255, 0.6);
 }
 
 .status-item .label {
   font-size: 22rpx;
-  color: #666;
-  margin-top: 8rpx;
+  color: #A0A0B0;
+  margin-top: 10rpx;
+  letter-spacing: 2rpx;
+  text-transform: uppercase;
 }
 
 .start-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100rpx;
+  margin-top: 120rpx;
+  position: relative;
+}
+
+/* 开始按钮周边的光环底座 */
+.start-section::before {
+  content: '';
+  position: absolute;
+  top: 10rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 450rpx;
+  height: 120rpx;
+  background: radial-gradient(ellipse at center, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .start-btn {
   width: 400rpx;
   height: 100rpx;
-  line-height: 100rpx;
+  line-height: 60rpx; /* account for padding to center vertically if necessary, or let padding define height */
   font-size: 36rpx;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .plan-info {
   font-size: 24rpx;
-  color: #999;
-  margin-top: 30rpx;
+  color: #808090;
+  margin-top: 40rpx;
+  letter-spacing: 1rpx;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10rpx 30rpx;
+  border-radius: 30rpx;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }

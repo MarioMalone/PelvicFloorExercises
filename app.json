@@ -6,17 +6,17 @@
     "pages/settings/settings"
   ],
   "window": {
-    "backgroundColor": "#F8F9FA",
+    "backgroundColor": "#050505",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarBackgroundColor": "#0A0A10",
     "navigationBarTitleText": "盆底肌训练",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "color": "#999999",
-    "selectedColor": "#4A90E2",
-    "backgroundColor": "#FFFFFF",
-    "borderStyle": "white",
+    "color": "#555566",
+    "selectedColor": "#00F0FF",
+    "backgroundColor": "#0A0A10",
+    "borderStyle": "black",
     "list": [
       {
         "pagePath": "pages/index/index",

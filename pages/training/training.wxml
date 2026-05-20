@@ -4,9 +4,13 @@
     <!-- 基础圆环 (有呼吸缩放动画) -->
     <view class="radar-ring base-ring"></view>
     
-    <!-- 红色进度圆环 (仅收紧时显示) -->
+    <!-- 科技感扫描网格线 -->
+    <view class="radial-lines"></view>
+    <view class="scan-beam"></view>
+
+    <!-- 青蓝色进度圆环 (仅收紧时显示) -->
     <view class="progress-ring" wx:if="{{isHolding}}"
-          style="background: conic-gradient(#D65D56 {{progressDeg}}deg, transparent {{progressDeg}}deg)">
+          style="background: conic-gradient(#00F0FF {{progressDeg}}deg, transparent {{progressDeg}}deg)">
     </view>
   </view>
 
