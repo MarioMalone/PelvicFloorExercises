@@ -38,12 +38,15 @@
 slider {
   flex: 1;
   margin: 0 20rpx 0 0;
+  transition: all 0.3s ease;
 }
 
 .unit {
   font-size: 26rpx;
   color: #666;
   min-width: 40rpx;
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .picker-value {
@@ -62,6 +65,12 @@ slider {
   justify-content: space-between;
   align-items: center;
   padding: 10rpx 0;
+  border-radius: 12rpx;
+  transition: background-color 0.3s ease;
+}
+
+.danger-zone:active {
+  background-color: rgba(224, 32, 32, 0.1);
 }
 
 .danger-text {
@@ -71,6 +80,12 @@ slider {
 
 .danger-arrow {
   color: #CCC;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.danger-zone:hover .danger-arrow,
+.danger-zone:active .danger-arrow {
+  transform: translateX(10rpx);
 }
 
 .footer {
@@ -101,7 +116,9 @@ slider {
   border: 2rpx solid #EAEAEA;
   border-radius: 16rpx;
   text-align: center;
-  transition: all 0.2s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  animation: gentleBreathe 4s infinite ease-in-out;
 }
 
 .preset-btn:first-child {
@@ -115,12 +132,16 @@ slider {
 .preset-btn.active {
   border-color: #4A90E2;
   background: rgba(74, 144, 226, 0.08);
+  transform: scale(1.05);
+  box-shadow: 0 0 20rpx rgba(74, 144, 226, 0.2);
+  animation: none;
 }
 
 .preset-name {
   font-size: 28rpx;
   font-weight: 500;
   color: #333;
+  transition: color 0.3s ease;
 }
 
 .preset-desc {
@@ -131,6 +152,43 @@ slider {
 
 .preset-btn.active .preset-name {
   color: #4A90E2;
+}
+
+.active-check {
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+  width: 32rpx;
+  height: 32rpx;
+  background-color: #4A90E2;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 8rpx rgba(74,144,226,0.4);
+}
+.active-check::after {
+  content: '✓';
+}
+
+/* 开关动画 */
+.switch-control {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.switch-control:active {
+  transform: scale(0.95);
+}
+.switch-control.switch-active {
+  transform: scale(1.02);
+}
+
+/* 保存成功按钮态 */
+.save-success {
+  background: #52C41A !important;
+  box-shadow: 0 4rpx 12rpx rgba(82, 196, 26, 0.3) !important;
+  animation: none !important;
 }
 
 /* 测试推送提示区 */

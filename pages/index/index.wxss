@@ -156,3 +156,96 @@
   background: #9C6ADE;
 }
 
+
+
+/* --- Animations --- */
+
+/* 1. Page Entry Cascade Animation */
+@keyframes fadeSlideUp {
+  0% { transform: translateY(40rpx); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.anim-cascade-1 { animation: fadeSlideUp 600ms cubic-bezier(0.4, 0, 0.2, 1) both; animation-delay: 0ms; }
+.anim-cascade-2 { animation: fadeSlideUp 600ms cubic-bezier(0.4, 0, 0.2, 1) both; animation-delay: 100ms; }
+.anim-cascade-3 { animation: fadeSlideUp 600ms cubic-bezier(0.4, 0, 0.2, 1) both; animation-delay: 200ms; }
+.anim-cascade-4 { animation: fadeSlideUp 600ms cubic-bezier(0.4, 0, 0.2, 1) both; animation-delay: 300ms; }
+
+/* 2. Stats Counter Animation */
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.anim-pop { 
+  display: inline-block; /* Ensure transform applies */
+  animation: popIn 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275) both; 
+  animation-delay: 400ms; 
+}
+
+/* 3. Start Button Premium Animation */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.4); }
+  70% { box-shadow: 0 0 0 20rpx rgba(74, 144, 226, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 144, 226, 0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.anim-start-btn {
+  background: linear-gradient(90deg, #4A90E2 0%, #6AB0FF 25%, #4A90E2 50%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear, pulseGlow 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 150ms ease-out;
+}
+.anim-start-btn:active {
+  transform: scale(0.95);
+}
+
+/* 4. Recommendation Card Animation */
+@keyframes borderGlow {
+  0% { box-shadow: -6rpx 0 12rpx -4rpx rgba(0,0,0,0.1); }
+  50% { box-shadow: -6rpx 0 20rpx -2rpx var(--color-accent, rgba(74, 144, 226, 0.5)); }
+  100% { box-shadow: -6rpx 0 12rpx -4rpx rgba(0,0,0,0.1); }
+}
+.anim-reco-card {
+  animation: fadeSlideUp 600ms cubic-bezier(0.4, 0, 0.2, 1) both 200ms, borderGlow 3s infinite ease-in-out 800ms;
+}
+.anim-reco-btn {
+  background: linear-gradient(90deg, #4A90E2 0%, #5ba0f2 25%, #4A90E2 50%);
+  background-size: 200% 100%;
+  animation: shimmer 4s infinite linear;
+  transition: transform 150ms ease-out;
+}
+.anim-reco-btn:active {
+  transform: scale(0.95);
+}
+
+/* 5. Greeting Animation */
+@keyframes letterSpacingReveal {
+  0% { letter-spacing: -0.2em; opacity: 0; }
+  100% { letter-spacing: normal; opacity: 1; }
+}
+.anim-greeting {
+  animation: letterSpacingReveal 800ms cubic-bezier(0.4, 0, 0.2, 1) both 100ms;
+}
+.anim-subtitle {
+  animation: popIn 600ms cubic-bezier(0.4, 0, 0.2, 1) both 400ms;
+}
+
+/* 6. Floating Background Element */
+.bg-orb {
+  position: absolute;
+  top: -100rpx;
+  right: -100rpx;
+  width: 500rpx;
+  height: 500rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(74,144,226,0.12) 0%, rgba(74,144,226,0) 70%);
+  animation: floatOrb 10s infinite alternate ease-in-out;
+  z-index: -1;
+  pointer-events: none;
+}
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-40rpx, 60rpx) scale(1.1); }
+}

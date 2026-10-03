@@ -1,23 +1,31 @@
 <!-- pages/training/training.wxml -->
-<view class="training-container">
+<view class="training-container ambient-glow">
   <!-- 核心圆环（canvas 2d 绘制，平滑进度 + 呼吸光晕） -->
   <canvas type="2d" id="ring" class="ring-canvas"></canvas>
 
   <!-- 实时数据覆盖层（叠在圆环中央） -->
   <view class="ui-overlay">
-    <view class="close-btn" bindtap="cancelTraining">✕</view>
+    <view class="close-btn" hover-class="close-btn-hover" bindtap="cancelTraining">✕</view>
     <block wx:if="{{isPreparing}}">
       <view class="stage-label prepare">准备</view>
-      <view class="timer-display">{{prepareTime}}</view>
-      <view class="round-indicator">即将开始...</view>
+      <block wx:for="{{[prepareTime]}}" wx:key="*this">
+        <view class="timer-display pulse-tick">{{item}}</view>
+      </block>
+      <view class="round-indicator slide-up">即将开始...</view>
     </block>
     <block wx:else>
-      <view class="stage-label {{isHolding ? 'hold' : 'relax'}}">{{isHolding ? '收紧' : '放松'}}</view>
-      <view class="timer-display">{{currentTime}}s</view>
-      <view class="round-indicator">第 {{currentRound}} / {{totalRounds}} 组</view>
+      <block wx:for="{{[isHolding]}}" wx:key="*this">
+        <view class="stage-label {{item ? 'hold' : 'relax'}}">{{item ? '收紧' : '放松'}}</view>
+      </block>
+      <block wx:for="{{[currentTime]}}" wx:key="*this">
+        <view class="timer-display pulse-tick">{{item}}s</view>
+      </block>
+      <block wx:for="{{[currentRound]}}" wx:key="*this">
+        <view class="round-indicator slide-up">第 {{item}} / {{totalRounds}} 组</view>
+      </block>
     </block>
   </view>
 
   <!-- 结束训练：固定在底部，避免与圆环重叠 -->
-  <view class="end-training-btn" wx:if="{{!isPreparing}}" bindtap="cancelTraining">结束训练</view>
+  <view class="end-training-btn floating-btn" wx:if="{{!isPreparing}}" bindtap="cancelTraining">结束训练</view>
 </view>

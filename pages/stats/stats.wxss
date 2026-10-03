@@ -295,3 +295,170 @@
   color: #666;
   margin-top: 6rpx;
 }
+
+/* =======================================================
+   ANIMATIONS ENHANCEMENTS
+   ======================================================= */
+
+/* Page Entry Cascades */
+@keyframes fadeSlideUp {
+  0% { opacity: 0; transform: translateY(30rpx); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  0% { opacity: 0; transform: translateX(50rpx); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.achievement-card {
+  animation: fadeSlideUp 600ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation-delay: 100ms;
+}
+
+.grid-item {
+  animation: fadeSlideUp 600ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.calendar-card {
+  animation: fadeSlideUp 600ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation-delay: 350ms;
+}
+
+.chart-container {
+  animation: fadeSlideUp 600ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation-delay: 450ms;
+}
+
+.history-item {
+  animation: slideInRight 600ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Banner Gradient Shift */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.header-banner {
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease-in-out infinite;
+}
+
+/* Level Badge: Bounce In + Rotating Border Glow */
+@keyframes bounceIn {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes spinGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.level-badge {
+  position: relative;
+  animation: bounceIn 600ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation-delay: 200ms;
+  z-index: 1;
+}
+.level-badge::before {
+  content: '';
+  position: absolute;
+  top: -4rpx; left: -4rpx; right: -4rpx; bottom: -4rpx;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.8) 50%, transparent 60%, transparent 100%);
+  animation: spinGlow 3s linear infinite;
+  z-index: -1;
+}
+
+/* Progress Bar */
+@keyframes fillProgress {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+@keyframes shineSweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+.level-progress-fill {
+  transform-origin: left;
+  animation: fillProgress 800ms cubic-bezier(0, 0, 0.2, 1) both;
+  animation-delay: 300ms;
+  position: relative;
+  overflow: hidden;
+}
+.level-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 50%; height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+  transform: translateX(-100%);
+  animation: shineSweep 2.5s infinite;
+  animation-delay: 1100ms;
+}
+
+/* Badge Row */
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  80% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes goldGlow {
+  0%, 100% { box-shadow: 0 0 10rpx rgba(255, 215, 0, 0.3); }
+  50% { box-shadow: 0 0 20rpx rgba(255, 215, 0, 0.6); }
+}
+.badge-item {
+  animation: popIn 500ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+.badge-item.unlocked .badge-icon {
+  border-radius: 50%;
+  animation: goldGlow 2s infinite ease-in-out;
+}
+
+/* Bar Chart */
+@keyframes barGrow {
+  0% { transform: scaleY(0); }
+  80% { transform: scaleY(1.05); }
+  100% { transform: scaleY(1); }
+}
+.bar {
+  transform-origin: bottom;
+  animation: barGrow 500ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Calendar Day Dots & Today Glow */
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1.5); box-shadow: 0 0 8rpx rgba(74, 144, 226, 0.4); }
+  50% { transform: scale(2); box-shadow: 0 0 16rpx rgba(74, 144, 226, 0.8); }
+}
+.training-dot.active {
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes todayGlow {
+  0%, 100% { text-shadow: 0 0 4rpx rgba(74, 144, 226, 0.2); }
+  50% { text-shadow: 0 0 12rpx rgba(74, 144, 226, 0.6); }
+}
+.day-number.today {
+  animation: todayGlow 2s infinite ease-in-out;
+}
+
+/* Summary Grid Numbers */
+.grid-item .value {
+  animation: popIn 500ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation-delay: inherit;
+}
+
+/* History Item Tag Shimmer */
+@keyframes tagShimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+.status-tag {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(74, 144, 226, 0.1) 0%, rgba(74, 144, 226, 0.3) 50%, rgba(74, 144, 226, 0.1) 100%);
+  background-size: 200% 100%;
+  animation: tagShimmer 3s infinite linear;
+}

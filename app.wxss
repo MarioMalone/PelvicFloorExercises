@@ -32,6 +32,27 @@ page {
   font-weight: 500;
   text-align: center;
   box-shadow: 0 4rpx 12rpx rgba(74, 144, 226, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: glowPulse 3s infinite;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-20deg);
+  animation: shimmer 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
+  box-shadow: 0 2rpx 6rpx rgba(74, 144, 226, 0.2);
 }
 
 .btn-secondary {
@@ -50,4 +71,33 @@ page {
   padding: 30rpx;
   margin-bottom: 30rpx;
   box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.card:hover, .card:active {
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.08);
+  transform: translateY(-2rpx);
+}
+
+/* 动画工具类 */
+@keyframes fadeSlideUp { from { opacity:0; transform:translateY(40rpx); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes scaleIn { from { opacity:0; transform:scale(0.8); } to { opacity:1; transform:scale(1); } }
+@keyframes shimmer { 0% { left: -100%; } 100% { left: 100%; } }
+@keyframes pulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.05); } }
+@keyframes gentleBreathe { 0%,100% { opacity:0.7; } 50% { opacity:1; } }
+@keyframes bounceIn { 0% { transform:scale(0); } 60% { transform:scale(1.1); } 100% { transform:scale(1); } }
+@keyframes slideInRight { from { opacity:0; transform:translateX(60rpx); } to { opacity:1; transform:translateX(0); } }
+@keyframes glowPulse { 0%,100% { box-shadow: 0 4rpx 12rpx rgba(74,144,226,0.3); } 50% { box-shadow: 0 8rpx 24rpx rgba(74,144,226,0.6); } }
+
+.anim-fade-in { animation: fadeIn 0.4s both cubic-bezier(0.4, 0, 0.2, 1); }
+.anim-slide-up { animation: fadeSlideUp 0.5s both cubic-bezier(0.4, 0, 0.2, 1); }
+.anim-scale-in { animation: scaleIn 0.4s both cubic-bezier(0.4, 0, 0.2, 1); }
+.anim-bounce-in { animation: bounceIn 0.5s both cubic-bezier(0.4, 0, 0.2, 1); }
+
+.anim-cascade-1 { animation: fadeSlideUp 0.5s 0ms both cubic-bezier(0.4, 0, 0.2, 1); }
+.anim-cascade-2 { animation: fadeSlideUp 0.5s 100ms both cubic-bezier(0.4, 0, 0.2, 1); }
+.anim-cascade-3 { animation: fadeSlideUp 0.5s 200ms both cubic-bezier(0.4, 0, 0.2, 1); }
+.anim-cascade-4 { animation: fadeSlideUp 0.5s 300ms both cubic-bezier(0.4, 0, 0.2, 1); }
+.anim-cascade-5 { animation: fadeSlideUp 0.5s 400ms both cubic-bezier(0.4, 0, 0.2, 1); }
+.anim-cascade-6 { animation: fadeSlideUp 0.5s 500ms both cubic-bezier(0.4, 0, 0.2, 1); }

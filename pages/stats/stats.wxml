@@ -18,7 +18,7 @@
       </view>
     </view>
     <view class="badge-row">
-      <view wx:for="{{badges}}" wx:key="key" class="badge-item {{item.unlocked ? 'unlocked' : ''}}">
+      <view wx:for="{{badges}}" wx:key="key" class="badge-item {{item.unlocked ? 'unlocked' : ''}}" style="animation-delay: {{index * 100 + 300}}ms">
         <view class="badge-icon">{{item.icon}}</view>
         <view class="badge-name">{{item.name}}</view>
       </view>
@@ -26,17 +26,17 @@
   </view>
 
   <view class="summary-grid">
-    <view class="grid-item card">
+    <view class="grid-item card" style="animation-delay: 200ms">
       <view class="label">坚持天数</view>
       <view class="value">{{summary.totalDays}}</view>
       <view class="unit">天</view>
     </view>
-    <view class="grid-item card">
+    <view class="grid-item card" style="animation-delay: 250ms">
       <view class="label">累计时长</view>
       <view class="value">{{summary.totalTime}}</view>
       <view class="unit">分钟</view>
     </view>
-    <view class="grid-item card">
+    <view class="grid-item card" style="animation-delay: 300ms">
       <view class="label">累计完成</view>
       <view class="value">{{summary.totalRounds}}</view>
       <view class="unit">组</view>
@@ -62,7 +62,7 @@
     <view class="chart-main">
       <view wx:for="{{chartData}}" wx:key="date" class="chart-column">
         <view class="bar-wrapper">
-          <view class="bar" style="height: {{item.height}}%">
+          <view class="bar" style="height: {{item.height}}%; animation-delay: {{index * 80 + 450}}ms">
             <view class="bar-value" wx:if="{{item.value > 0}}">{{item.value}}</view>
           </view>
         </view>
@@ -75,7 +75,7 @@
   
   <view class="history-list">
     <block wx:if="{{history.length > 0}}">
-      <view wx:for="{{history}}" wx:key="timestamp" class="history-item card">
+      <view wx:for="{{history}}" wx:key="timestamp" class="history-item card" style="animation-delay: {{index * 100 + 500}}ms">
         <view class="item-left">
           <view class="item-date">{{item.date}}</view>
           <view class="item-info">{{item.rounds}}组 · {{item.duration}}秒</view>

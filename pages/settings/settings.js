@@ -15,7 +15,11 @@ Page({
     selectedPreset: '',
     voiceEnabled: false,
     reminderEnabled: false,
-    reminderTime: '09:00'
+    reminderTime: '09:00',
+    saveSuccess: false,
+    isHoldTimeChanging: false,
+    isRelaxTimeChanging: false,
+    isRepeatsChanging: false
   },
 
   onShow: function () {
@@ -85,15 +89,27 @@ Page({
   },
 
   onHoldTimeChange: function (e) {
-    this.setData({ holdTime: e.detail.value })
+    this.setData({ holdTime: e.detail.value, isHoldTimeChanging: false })
+  },
+
+  onHoldTimeChanging: function () {
+    this.setData({ isHoldTimeChanging: true })
   },
 
   onRelaxTimeChange: function (e) {
-    this.setData({ relaxTime: e.detail.value })
+    this.setData({ relaxTime: e.detail.value, isRelaxTimeChanging: false })
+  },
+
+  onRelaxTimeChanging: function () {
+    this.setData({ isRelaxTimeChanging: true })
   },
 
   onRepeatsChange: function (e) {
-    this.setData({ repeats: e.detail.value })
+    this.setData({ repeats: e.detail.value, isRepeatsChanging: false })
+  },
+
+  onRepeatsChanging: function () {
+    this.setData({ isRepeatsChanging: true })
   },
 
   // 选择预设方案：一键套用并保存
@@ -131,6 +147,11 @@ Page({
 
     store.setSetting('custom_plan', newPlan)
     app.globalData.currentPlan = newPlan
+
+    this.setData({ saveSuccess: true })
+    setTimeout(() => {
+      this.setData({ saveSuccess: false })
+    }, 1500)
 
     wx.showToast({
       title: '设置已保存',

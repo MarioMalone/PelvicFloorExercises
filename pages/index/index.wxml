@@ -1,26 +1,28 @@
 <!-- index.wxml -->
 <view class="container">
-  <view class="header card">
-    <view class="greeting">你好，健康的一天</view>
-    <view class="subtitle">今日尚未训练，快来开启训练吧</view>
+  <view class="bg-orb"></view>
+
+  <view class="header card anim-cascade-1">
+    <view class="greeting anim-greeting">你好，健康的一天</view>
+    <view class="subtitle anim-subtitle">今日尚未训练，快来开启训练吧</view>
   </view>
 
-  <view class="daily-status card">
+  <view class="daily-status card anim-cascade-2">
     <view class="status-item">
-      <view class="value">{{todayCount}}</view>
+      <view class="value anim-pop">{{todayCount}}</view>
       <view class="label">今日次数</view>
     </view>
     <view class="status-item">
-      <view class="value">{{streak}}</view>
+      <view class="value anim-pop">{{streak}}</view>
       <view class="label">连胜天数</view>
     </view>
     <view class="status-item">
-      <view class="value">{{totalTime}}</view>
+      <view class="value anim-pop">{{totalTime}}</view>
       <view class="label">累计分钟</view>
     </view>
   </view>
 
-  <view class="reco-card card reco-{{recommendation.type}}" wx:if="{{recommendation}}">
+  <view class="reco-card card reco-{{recommendation.type}} anim-reco-card" wx:if="{{recommendation}}">
     <view class="reco-head">
       <view class="reco-badge">{{recommendation.tag}}</view>
       <view class="reco-title">{{recommendation.title}}</view>
@@ -31,11 +33,11 @@
       <text class="reco-plan-meta">{{recommendation.suggestedPlan.holdTime}}s 收缩 / {{recommendation.suggestedPlan.relaxTime}}s 放松 / {{recommendation.suggestedPlan.repeats}} 次</text>
     </view>
     <view class="reco-tip">{{recommendation.tip}}</view>
-    <view class="reco-btn btn-primary" bindtap="applyRecommendation">{{recommendation.actionText}}</view>
+    <view class="reco-btn btn-primary anim-reco-btn" bindtap="applyRecommendation">{{recommendation.actionText}}</view>
   </view>
 
-  <view class="start-section">
-    <view class="btn-primary start-btn" bindtap="startTraining">
+  <view class="start-section anim-cascade-4">
+    <view class="btn-primary start-btn anim-start-btn" bindtap="startTraining">
       开始训练
     </view>
     <view class="plan-info">
