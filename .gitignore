@@ -12,3 +12,9 @@ project.private.config.json
 brain/
 PRD.md
 Implementation_Plan.md
+
+# Agent runtime data (memory / logs)
+.workbuddy/
+
+# WeChat CI upload private key (user-provided, never commit)
+scripts/private.key

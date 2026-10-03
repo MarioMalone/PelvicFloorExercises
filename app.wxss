@@ -5,6 +5,14 @@ page {
   color: #1d1d1f;
   font-size: 28rpx;
   line-height: 1.4;
+  /* 设计令牌：全站统一视觉规范（方案 B 浅色） */
+  --color-bg: #f7f7f7;
+  --color-surface: #ffffff;
+  --color-text: #1d1d1f;
+  --color-text-dim: rgba(0, 0, 0, 0.45);
+  --color-accent: #4a90e2;
+  --color-accent-soft: #d65d56;
+  --radius-card: 20rpx;
 }
 
 .container {

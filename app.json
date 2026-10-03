@@ -3,8 +3,10 @@
     "pages/index/index",
     "pages/training/training",
     "pages/stats/stats",
-    "pages/settings/settings"
+    "pages/settings/settings",
+    "pages/privacy/privacy"
   ],
+  "__usePrivacyCheck__": true,
   "window": {
     "backgroundColor": "#F8F9FA",
     "backgroundTextStyle": "light",

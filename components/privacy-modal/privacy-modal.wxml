@@ -1,0 +1,11 @@
+<!-- components/privacy-modal/privacy-modal.wxml -->
+<view class="privacy-mask" wx:if="{{visible}}">
+  <view class="privacy-card">
+    <view class="privacy-title">{{name}}</view>
+    <view class="privacy-desc">使用前请阅读并同意《隐私保护指引》。我们仅将训练记录存储在您的设备本地，不会收集您的姓名、位置等无关信息。</view>
+    <view class="privacy-actions">
+      <view class="privacy-btn ghost" bindtap="onView">查看协议</view>
+      <view class="privacy-btn primary" bindtap="onAgree">同意并继续</view>
+    </view>
+  </view>
+</view>

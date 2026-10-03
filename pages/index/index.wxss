@@ -56,3 +56,103 @@
   color: #999;
   margin-top: 30rpx;
 }
+
+/* 智能推荐卡片 */
+.reco-card {
+  border-left: 8rpx solid var(--color-accent, #4A90E2);
+  padding: 30rpx;
+}
+
+.reco-head {
+  display: flex;
+  align-items: center;
+}
+
+.reco-badge {
+  font-size: 20rpx;
+  color: #FFFFFF;
+  background: var(--color-accent, #4A90E2);
+  border-radius: 8rpx;
+  padding: 4rpx 14rpx;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.reco-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #1d1d1f;
+}
+
+.reco-reason {
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 16rpx;
+  line-height: 1.5;
+}
+
+.reco-plan {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+  background: #f7f7f7;
+  border-radius: 12rpx;
+  padding: 18rpx 20rpx;
+}
+
+.reco-plan-name {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: var(--color-accent, #4A90E2);
+}
+
+.reco-plan-meta {
+  font-size: 22rpx;
+  color: #888;
+  margin-top: 8rpx;
+}
+
+.reco-tip {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 16rpx;
+  line-height: 1.5;
+}
+
+.reco-btn {
+  margin-top: 24rpx;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 18rpx 0;
+  font-size: 28rpx;
+}
+
+/* 推荐类型配色 */
+.reco-upgrade {
+  border-left-color: #4A90E2;
+}
+.reco-upgrade .reco-badge {
+  background: #4A90E2;
+}
+
+.reco-maintain {
+  border-left-color: #52C41A;
+}
+.reco-maintain .reco-badge {
+  background: #52C41A;
+}
+
+.reco-consolidate {
+  border-left-color: #FA8C16;
+}
+.reco-consolidate .reco-badge {
+  background: #FA8C16;
+}
+
+.reco-start {
+  border-left-color: #9C6ADE;
+}
+.reco-start .reco-badge {
+  background: #9C6ADE;
+}
+

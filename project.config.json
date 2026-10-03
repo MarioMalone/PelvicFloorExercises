@@ -50,8 +50,9 @@
     "disableSWC": true
   },
   "compileType": "miniprogram",
-  "libVersion": "latest",
-  "appid": "touristappid",
+  "libVersion": "3.14.0",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "appid": "wxe70f59e3c858c1fa",
   "projectname": "PelvicFloorExercise",
   "condition": {},
   "editorSetting": {

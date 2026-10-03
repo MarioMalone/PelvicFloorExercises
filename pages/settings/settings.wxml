@@ -1,5 +1,17 @@
 <!-- pages/settings/settings.wxml -->
 <view class="container">
+  <view class="section-title">训练方案</view>
+  <view class="card preset-card">
+    <view class="preset-row">
+      <view wx:for="{{presets}}" wx:key="key"
+            class="preset-btn {{selectedPreset === item.key ? 'active' : ''}}"
+            data-key="{{item.key}}" bindtap="onPresetTap">
+        <view class="preset-name">{{item.name}}</view>
+        <view class="preset-desc">{{item.desc}}</view>
+      </view>
+    </view>
+  </view>
+
   <view class="section-title">训练参数设置</view>
   
   <view class="card settings-group">
@@ -39,6 +51,19 @@
 
   <view class="btn-primary" bindtap="saveSettings">保存设置</view>
 
+  <view class="section-title margin-top">训练偏好</view>
+  <view class="card settings-group">
+    <view class="setting-item border-none">
+      <view class="item-label">
+        <text class="title">语音引导</text>
+        <text class="desc">收缩 / 放松时播放「收」「放」语音提示</text>
+      </view>
+      <view class="item-control">
+        <switch checked="{{voiceEnabled}}" bindchange="onVoiceToggle" color="#4A90E2" />
+      </view>
+    </view>
+  </view>
+
   <view class="section-title margin-top">每日提醒</view>
   <view class="card settings-group">
     <view class="setting-item">
@@ -59,6 +84,23 @@
         <picker mode="time" value="{{reminderTime}}" bindchange="onReminderTimeChange">
           <view class="picker-value">{{reminderTime}}</view>
         </picker>
+        <text class="unit">></text>
+      </view>
+    </view>
+
+    <view class="reco-push-tip" wx:if="{{reminderEnabled}}">
+      <text class="reco-push-text">已授权订阅消息。真实定时推送需配合云函数，点击下方按钮可立即发送一条测试推送验证可达性。</text>
+      <view class="btn-secondary reco-push-btn" bindtap="sendTestReminder">发送测试提醒</view>
+    </view>
+  </view>
+
+  <view class="section-title margin-top">关于</view>
+  <view class="card settings-group">
+    <view class="setting-item border-none" bindtap="goPrivacy">
+      <view class="item-label">
+        <text class="title">隐私保护指引</text>
+      </view>
+      <view class="item-control">
         <text class="unit">></text>
       </view>
     </view>

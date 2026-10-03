@@ -5,6 +5,26 @@
     <view class="banner-desc">每一步坚持都在汇聚成健康的你</view>
   </view>
 
+  <view class="card achievement-card">
+    <view class="achievement-head">
+      <view class="level-badge">Lv.{{levelInfo.level}}</view>
+      <view class="level-info">
+        <view class="level-title">{{levelInfo.title}}</view>
+        <view class="level-progress-track">
+          <view class="level-progress-fill" style="width: {{levelInfo.progress}}%"></view>
+        </view>
+        <view class="level-hint" wx:if="{{levelInfo.nextRounds}}">距下一级还需 {{levelInfo.nextRounds - summary.totalRounds}} 组</view>
+        <view class="level-hint" wx:else>已达最高等级</view>
+      </view>
+    </view>
+    <view class="badge-row">
+      <view wx:for="{{badges}}" wx:key="key" class="badge-item {{item.unlocked ? 'unlocked' : ''}}">
+        <view class="badge-icon">{{item.icon}}</view>
+        <view class="badge-name">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+
   <view class="summary-grid">
     <view class="grid-item card">
       <view class="label">坚持天数</view>
@@ -37,7 +57,7 @@
     </view>
   </view>
 
-  <view class="section-title">近7日趋势 (训练指数)</view>
+  <view class="section-title">近7日趋势 (分钟)</view>
   <view class="card chart-container">
     <view class="chart-main">
       <view wx:for="{{chartData}}" wx:key="date" class="chart-column">

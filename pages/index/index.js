@@ -1,5 +1,7 @@
 // pages/index/index.js
 const app = getApp()
+const recommend = require('../../utils/recommend.js')
+const store = require('../../utils/store.js')
 
 Page({
     data: {
@@ -10,7 +12,8 @@ Page({
             holdTime: 3,
             relaxTime: 3,
             repeats: 10
-        }
+        },
+        recommendation: null
     },
 
     onLoad: function () {
@@ -22,7 +25,7 @@ Page({
     },
 
     refreshStats: function () {
-        const history = wx.getStorageSync('training_history') || []
+        const history = store.getLocal('training_history', [])
 
         const now = new Date()
         const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`
@@ -47,7 +50,8 @@ Page({
             todayCount: todayCount,
             totalTime: totalMinutes,
             streak: streak,
-            currentPlan: app.globalData.currentPlan
+            currentPlan: app.globalData.currentPlan,
+            recommendation: recommend.getRecommendation(history, app.globalData.currentPlan, app.globalData.presets)
         })
     },
 
@@ -75,6 +79,24 @@ Page({
     },
 
     startTraining: function () {
+        wx.navigateTo({
+            url: '/pages/training/training'
+        })
+    },
+
+    // 一键采用推荐方案并进入训练
+    applyRecommendation: function () {
+        const rec = this.data.recommendation
+        if (!rec) return
+        const p = rec.suggestedPlan || {}
+        const newPlan = {
+            holdTime: parseInt(p.holdTime) || 3,
+            relaxTime: parseInt(p.relaxTime) || 3,
+            repeats: parseInt(p.repeats) || 10,
+            name: p.name
+        }
+        store.setSetting('custom_plan', newPlan)
+        app.globalData.currentPlan = newPlan
         wx.navigateTo({
             url: '/pages/training/training'
         })

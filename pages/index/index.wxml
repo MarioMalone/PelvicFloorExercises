@@ -20,6 +20,20 @@
     </view>
   </view>
 
+  <view class="reco-card card reco-{{recommendation.type}}" wx:if="{{recommendation}}">
+    <view class="reco-head">
+      <view class="reco-badge">{{recommendation.tag}}</view>
+      <view class="reco-title">{{recommendation.title}}</view>
+    </view>
+    <view class="reco-reason">{{recommendation.reason}}</view>
+    <view class="reco-plan">
+      <text class="reco-plan-name">{{recommendation.suggestedPlan.name}}</text>
+      <text class="reco-plan-meta">{{recommendation.suggestedPlan.holdTime}}s 收缩 / {{recommendation.suggestedPlan.relaxTime}}s 放松 / {{recommendation.suggestedPlan.repeats}} 次</text>
+    </view>
+    <view class="reco-tip">{{recommendation.tip}}</view>
+    <view class="reco-btn btn-primary" bindtap="applyRecommendation">{{recommendation.actionText}}</view>
+  </view>
+
   <view class="start-section">
     <view class="btn-primary start-btn" bindtap="startTraining">
       开始训练
@@ -28,4 +42,6 @@
       当前模式：{{currentPlan.holdTime}}s收缩 / {{currentPlan.relaxTime}}s放松 / {{currentPlan.repeats}}次
     </view>
   </view>
+
+  <privacy-modal />
 </view>

@@ -1,0 +1,11 @@
+{
+  "name": "miniprogram-ci-upload",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "upload": "node upload.js"
+  },
+  "dependencies": {
+    "miniprogram-ci": "^2.0.0"
+  }
+}

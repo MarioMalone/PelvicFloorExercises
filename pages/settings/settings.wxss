@@ -83,3 +83,72 @@ slider {
   font-size: 24rpx;
   color: #CCC;
 }
+
+/* 预设方案 */
+.preset-card {
+  padding: 30rpx !important;
+}
+
+.preset-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.preset-btn {
+  flex: 1;
+  margin: 0 10rpx;
+  padding: 24rpx 0;
+  border: 2rpx solid #EAEAEA;
+  border-radius: 16rpx;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.preset-btn:first-child {
+  margin-left: 0;
+}
+
+.preset-btn:last-child {
+  margin-right: 0;
+}
+
+.preset-btn.active {
+  border-color: #4A90E2;
+  background: rgba(74, 144, 226, 0.08);
+}
+
+.preset-name {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.preset-desc {
+  font-size: 20rpx;
+  color: #999;
+  margin-top: 6rpx;
+}
+
+.preset-btn.active .preset-name {
+  color: #4A90E2;
+}
+
+/* 测试推送提示区 */
+.reco-push-tip {
+  margin-top: 24rpx;
+  padding: 20rpx;
+  background: #f7f7f7;
+  border-radius: 12rpx;
+}
+
+.reco-push-text {
+  font-size: 22rpx;
+  color: #888;
+  line-height: 1.5;
+}
+
+.reco-push-btn {
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  padding: 16rpx 0;
+}

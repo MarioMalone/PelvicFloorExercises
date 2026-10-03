@@ -1,4 +1,6 @@
 // pages/stats/stats.js
+const store = require('../../utils/store.js')
+
 Page({
   data: {
     history: [],
@@ -9,7 +11,9 @@ Page({
     },
     chartData: [],
     calendarDays: [],
-    currentMonthName: ''
+    currentMonthName: '',
+    levelInfo: { level: 1, title: '新手上路', nextRounds: 50, progress: 0 },
+    badges: []
   },
 
   onShow: function () {
@@ -17,19 +21,24 @@ Page({
   },
 
   loadStats: function () {
-    const history = wx.getStorageSync('training_history') || []
+    const history = store.getLocal('training_history', [])
 
     // 计算统计数据
     const summary = this.calculateSummary(history)
     const chartData = this.calculateChartData(history)
     const calendar = this.calculateCalendar(history)
+    const streak = this.calculateStreak(history)
+    const levelInfo = this.calculateLevel(summary.totalRounds)
+    const badges = this.calculateBadges(summary, streak)
 
     this.setData({
       history: history.slice(0, 50),
       summary: summary,
       chartData: chartData,
       calendarDays: calendar.days,
-      currentMonthName: calendar.monthName
+      currentMonthName: calendar.monthName,
+      levelInfo: levelInfo,
+      badges: badges
     })
   },
 
@@ -78,11 +87,10 @@ Page({
       const dateStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
       const label = (d.getMonth() + 1) + '/' + d.getDate()
 
-      // 计算该日期的训练指数 (分钟 * 组数)
+      // 计算该日期的训练指数（当日总训练分钟，避免组数被重复计算）
       const records = history.filter(item => item.date === dateStr)
       const dayIndex = records.reduce((acc, item) => {
-        const mins = item.duration / 60
-        return acc + (mins * item.rounds)
+        return acc + (item.duration / 60)
       }, 0)
 
       days.push({
@@ -119,5 +127,58 @@ Page({
   formatDuration: function (seconds) {
     if (seconds < 60) return seconds + '秒'
     return Math.floor(seconds / 60) + '分' + (seconds % 60) + '秒'
+  },
+
+  // 计算连续打卡天数（与 index 页逻辑一致）
+  calculateStreak: function (history) {
+    if (!history.length) return 0
+    const dates = [...new Set(history.map(item => item.date))].sort().reverse()
+    let streak = 0
+    let current = new Date()
+    current.setHours(0, 0, 0, 0)
+    for (let i = 0; i < dates.length; i++) {
+      const d = new Date(dates[i])
+      d.setHours(0, 0, 0, 0)
+      const diff = Math.floor((current - d) / (1000 * 60 * 60 * 24))
+      if (diff === streak) {
+        streak++
+      } else if (diff > streak) {
+        break
+      }
+    }
+    return streak
+  },
+
+  // 基于累计组数计算等级
+  calculateLevel: function (totalRounds) {
+    const tiers = [
+      { min: 500, level: 4, title: '盆底达人' },
+      { min: 200, level: 3, title: '稳步提升' },
+      { min: 50, level: 2, title: '渐入佳境' },
+      { min: 0, level: 1, title: '新手上路' }
+    ]
+    const tier = tiers.find(t => totalRounds >= t.min) || tiers[tiers.length - 1]
+    const upper = tiers.find(t => t.level === tier.level + 1)
+    const nextRounds = upper ? upper.min : null
+    const span = nextRounds ? (nextRounds - tier.min) : 1
+    const done = nextRounds ? (totalRounds - tier.min) : totalRounds
+    const progress = nextRounds ? Math.min(100, Math.round((done / span) * 100)) : 100
+    return {
+      level: tier.level,
+      title: tier.title,
+      nextRounds: nextRounds,
+      progress: progress
+    }
+  },
+
+  // 基于汇总数据计算成就勋章
+  calculateBadges: function (summary, streak) {
+    const defs = [
+      { key: 'first', name: '初出茅庐', icon: '🌱', unlocked: summary.totalDays >= 1 },
+      { key: 'week', name: '一周坚持', icon: '🔥', unlocked: streak >= 7 || summary.totalDays >= 7 },
+      { key: 'hundred', name: '百组达成', icon: '💯', unlocked: summary.totalRounds >= 100 },
+      { key: 'month', name: '月度达人', icon: '🏅', unlocked: summary.totalDays >= 30 }
+    ]
+    return defs
   }
 })
